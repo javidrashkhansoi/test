@@ -18,8 +18,8 @@ concurrency:
 jobs:
   deploy:
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: test-project
+      url: https://javidrashkhansoi.github.io/test/index.html
 
     runs-on: ubuntu-latest
 
