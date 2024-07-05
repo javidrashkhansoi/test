@@ -1,0 +1,9 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+body {
+  .scroll-lock & {
+    overflow: hidden;
+  }
+}

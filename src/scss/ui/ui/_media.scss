@@ -1,0 +1,12 @@
+.media {
+  aspect-ratio: var(--media-aspect-ratio, 16 / 9);
+
+  // .media__button
+  &__button {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+  }
+}

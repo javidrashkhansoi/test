@@ -1,0 +1,44 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+:root {
+  --range-fill-value: 50;
+  --range-thumb-size: 16px;
+  --range-background-color: #efefef;
+  --range-fill-color: #0075ff;
+}
+
+@mixin range-thumb-styles {
+  inline-size: var(--range-thumb-width, var(--range-thumb-size));
+  block-size: var(--range-thumb-height, var(--range-thumb-size));
+  background-color: var(--range-thumb-background-color, var(--range-fill-color));
+  border: none;
+  border-radius: 0;
+}
+
+.range {
+  --range-fill-positon: calc(
+    var(--range-fill-value) * 1% - (var(--range-fill-value) - 50) * var(--range-thumb-width, var(--range-thumb-size)) /
+      100
+  );
+
+  appearance: none;
+  inline-size: 100%;
+  block-size: 8px;
+  background-color: var(--range-background-color);
+  background-image: linear-gradient(
+    to right,
+    var(--range-fill-color) var(--range-fill-positon),
+    var(--range-background-color) var(--range-fill-positon)
+  );
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    @include range-thumb-styles();
+  }
+
+  &::-moz-range-thumb {
+    @include range-thumb-styles();
+  }
+}

@@ -1,0 +1,64 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+@mixin textarea {
+  #{--textarea}: {
+    // display: block;
+    // width: ; // var(--input-width)
+    // min-height: ;
+    // max-height: ;
+    // padding: ;
+    padding: {
+      // block: ;
+      // top: ;
+      // bottom: ;
+      // inline: ; // var(--input-padding-inline)
+      // left: ; // var(--input-padding-left)
+      // right: ; // var(--input-padding-right)
+    }
+    font: {
+      // family: ; // var(--input-font-family)
+      // weight: ; // var(--input-font-weight)
+      // style: ; // var(--input-font-style)
+      // size: ; // var(--input-font-size)
+    }
+    // line-height: inherit;
+    // color: ; // var(--input-color)
+    color: {
+      // disabled: ; // var(--input-color-disabled)
+    }
+    background: {
+      // color: ; // var(--input-background-color)
+      // disabled: ; // var(--input-background-color-disabled)
+    }
+    border: {
+      // width: ; // var(--input-border-width)
+      // style: ; // var(--input-border-style)
+      // color: ; // var(--input-border-color)
+      color: {
+        // disabled: ; // var(--input-border-color-disabled)
+        // focus: ; // var(--input-border-color-focus)
+      }
+      // radius: ; // var(--input-border-radius)
+      top: {
+        // left-radius: ; // var(--input-border-top-left-radius)
+        // right-radius: ; // var(--input-border-top-right-radius)
+      }
+      bottom: {
+        // right-radius: ; // var(--input-border-bottom-right-radius)
+        // left-radius: ; // var(--input-border-bottom-left-radius)
+      }
+    }
+    // resize: vertical;
+    transition: {
+      // property: ; // var(--input-transition-property)
+      // duration: ; // var(--input-transition-duration)
+    }
+
+    placeholder: {
+      // color: ; // var(--input-placeholder-color)
+      // opacity: ; // var(--input-placeholder-opacity)
+    }
+  }
+}

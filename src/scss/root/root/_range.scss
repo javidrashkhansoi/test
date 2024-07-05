@@ -1,0 +1,110 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+@mixin range {
+  #{--range}: {
+    // position: ;
+    // top: auto;
+    // bottom: auto;
+    // left: auto;
+    // right: auto;
+    // z-index: ;
+    // width: 100%;
+    // height: 8px;
+
+    padding: {
+      // inline: ;
+      // left: ;
+      // right: ;
+    }
+
+    background: {
+      // color: #efefef;
+
+      color: {
+        // disabled: #fafafa;
+      }
+    }
+
+    fill: {
+      // direction: right;
+      // color: #0075ff;
+
+      color: {
+        // hover: ;
+        // disabled: #cbcbcb;
+      }
+    }
+
+    border: {
+      // width: 0px;
+      // style: solid;
+      // color: ;
+      // radius: ;
+
+      top: {
+        // left-radius: ;
+        // right-radius: ;
+      }
+
+      bottom: {
+        // right-radius: ;
+        // left-radius: ;
+      }
+    }
+
+    transition: {
+      // property: none;
+      // duration: 0.3s;
+    }
+
+    thumb: {
+      // size: 16px;
+      // width: ;
+      // height: ;
+      // cursor: pointer;
+
+      background: {
+        // image: ;
+        // color: #0075ff;
+
+        color: {
+          // hover: #005cc8;
+          // disabled: #cbcbcb;
+        }
+      }
+
+      border: {
+        // width: 0px;
+        // style: solid;
+        // color: ;
+        // radius: 50%;
+
+        top: {
+          // left-radius: ;
+          // right-radius: ;
+        }
+
+        bottom: {
+          // right-radius: ;
+          // left-radius: ;
+        }
+      }
+
+      focus: {
+        outline: {
+          // width: 2px;
+          // style: solid;
+          // color: #0075ff;
+          // offset: 2px;
+        }
+      }
+
+      transition: {
+        // property: background-color;
+        // duration: 0.3s;
+      }
+    }
+  }
+}

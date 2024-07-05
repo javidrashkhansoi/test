@@ -1,0 +1,5 @@
+@use "../../variables/variables";
+
+html {
+  scroll-padding-block-start: variables.$header-height;
+}

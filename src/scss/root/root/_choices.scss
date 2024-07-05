@@ -1,0 +1,60 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+@mixin choices {
+  #{--choices}: {
+    // column-gap: 20px;
+    // min-height: 44px;
+    // font-size: inherit;
+    // color: ;
+
+    padding: {
+      // block: 5px;
+      // inline: 8px;
+      // left: ;
+      // right: ;
+    }
+
+    color: {
+      // hover: ;
+    }
+
+    background: {
+      // color: #f9f9f9;
+
+      color: {
+        // hover: ;
+      }
+    }
+
+    border: {
+      // width: 1px;
+      // style: solid;
+      // color: #ddd;
+      // radius: 3px;
+    }
+
+    list: {
+      border: {
+        // width: ; // var(--choices-border-width)
+        // style: ; // var(--choices-border-style)
+        // color: ; // var(--choices-border-color)
+        // radius: ; // var(--choices-border-radius)
+      }
+    }
+
+    item: {
+      // min-height: ; // var(--choices-min-height)
+      // font-size: inherit;
+      // color: ;
+
+      padding: {
+        // block: ; // var(--choices-padding-block)
+        // inline: ; // var(--choices-padding-inline)
+        // left: ; // var(--choices-padding-left)
+        // right: ; // var(--choices-padding-right)
+      }
+    }
+  }
+}

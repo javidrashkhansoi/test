@@ -1,0 +1,237 @@
+@use "../mixins/mixins";
+@use "../variables/variables";
+
+:root {
+  color: variables.$color-black;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+
+  padding: 0;
+  margin: 0;
+  border: none;
+
+  &:not(body):has(> img, > svg) {
+    flex: 0 0 auto;
+    font-size: 0;
+  }
+
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+
+  &::-moz-focus-inner {
+    padding: 0;
+    border: none;
+  }
+}
+
+:any-link,
+abbr,
+a {
+  text-decoration: none;
+}
+
+textarea:focus-visible,
+input:focus-visible,
+:focus,
+:active {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--outline-color, currentColor);
+  outline-offset: 2px;
+
+  @include mixins.hover {
+    outline: none;
+  }
+}
+
+:disabled {
+  cursor: default;
+}
+
+::placeholder {
+  opacity: 1;
+}
+
+html,
+body {
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+
+  inline-size: 100%;
+  block-size: 100%;
+  font-size: 16px;
+  line-height: 1;
+}
+
+html {
+  @include mixins.prefers-reduced-motion {
+    scroll-behavior: smooth;
+  }
+}
+
+th,
+textarea,
+input,
+button,
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+  font-weight: inherit;
+}
+
+textarea,
+input,
+button,
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+  font-size: inherit;
+}
+
+::placeholder,
+dialog,
+mark,
+textarea,
+input,
+button,
+a {
+  color: inherit;
+}
+
+cite,
+address,
+textarea,
+input,
+button {
+  font-style: inherit;
+}
+
+dialog,
+mark,
+textarea,
+input,
+button {
+  background: none;
+}
+
+label,
+button {
+  cursor: pointer;
+}
+
+textarea,
+input,
+button {
+  font-family: inherit;
+  line-height: inherit;
+}
+
+button {
+  align-items: center;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+q {
+  &::before,
+  &::after {
+    content: none;
+  }
+}
+
+img {
+  vertical-align: top;
+}
+
+svg {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+fieldset {
+  min-inline-size: auto;
+}
+
+dialog,
+textarea,
+input {
+  inline-size: 100%;
+}
+
+textarea,
+input {
+  display: block;
+  caret-color: currentColor;
+}
+
+input {
+  &[type="number"] {
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+  }
+
+  &[type="search"] {
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      appearance: none;
+    }
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  max-inline-size: none;
+  block-size: 100%;
+  max-block-size: none;
+  overflow: auto;
+
+  @include mixins.prefers-reduced-motion {
+    transition-property: opacity, visibility;
+    transition-duration: 0.3s;
+  }
+
+  &:not([open]) {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &::backdrop {
+    background: none;
+  }
+}

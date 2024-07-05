@@ -1,0 +1,102 @@
+@use "sass:meta";
+@use "sass:map";
+@use "sass:list";
+@use "sass:math";
+@use "../../variables/variables";
+
+$default-breakpoint: "default";
+$default-unit: px;
+
+$behavior-values: (
+  unfixed: "not-fixed",
+  both: "fixed-both",
+  start: "fixed-start-value",
+  end: "fixed-end-value"
+);
+
+@function responsive-value(
+  $start-value,
+  $end-value,
+  $start-breakpoint: $default-breakpoint,
+  $end-breakpoint: $default-breakpoint,
+  $behavior: map.get($behavior-values, start),
+  $unit: $default-unit
+) {
+  @if $start-breakpoint == $default-breakpoint {
+    $start-breakpoint: variables.$container;
+  }
+
+  @if $end-breakpoint == $default-breakpoint {
+    $end-breakpoint: variables.$mobile;
+  }
+
+  @each $key,
+    $value
+      in (
+        start-value: $start-value,
+        end-value: $end-value,
+        start-breakpoint: $start-breakpoint,
+        end-breakpoint: $end-breakpoint
+      )
+  {
+    @if meta.type-of($value) != number or math.is-unitless($value) == false {
+      @error "The value of $#{$key} (#{$value}) should be of type number without units";
+    }
+  }
+
+  @if $start-value == $end-value {
+    @error "$start-value (#{$start-value}) and $end-value (#{$end-value}) cannot be equal";
+  }
+
+  @if not($start-breakpoint > 0) {
+    @error "$start-breakpoint (#{$start-breakpoint}) cannot be equal to or less than zero";
+  }
+
+  @if $end-breakpoint < 0 {
+    @error "$end-breakpoint (#{$end-breakpoint}) cannot less than zero";
+  }
+
+  @if $start-breakpoint < $end-breakpoint {
+    @error "$end-breakpoint (#{$end-breakpoint}) cannot be greater than $start-breakpoint (#{$start-breakpoint})";
+  }
+
+  @if $start-breakpoint == $end-breakpoint {
+    @error "$end-breakpoint (#{$end-breakpoint}) cannot be equal to $start-breakpoint (#{$start-breakpoint})";
+  }
+
+  @if list.index(map.values($behavior-values), $behavior) == null {
+    @error "The value of $behavior (#{$behavior}) is incorrect. It can be \"not-fixed\", \"fixed-both\", \"fixed-start-value\", or \"fixed-end-value\"";
+  }
+
+  $start-value-unit: $start-value + $unit;
+  $end-value-unit: $end-value + $unit;
+  $end-breakpoint-unit: $end-breakpoint + $unit;
+  $value-difference: $start-value - $end-value;
+  $breakpoint-difference: $start-breakpoint - $end-breakpoint;
+  $calc: "#{$end-value-unit} + #{$value-difference} * ((100vw - #{$end-breakpoint-unit}) / #{$breakpoint-difference})";
+  $value: "";
+
+  @if $behavior == map.get($behavior-values, unfixed) {
+    $value: calc(#{$calc});
+  } @else {
+    @if $start-value > $end-value {
+      @if $behavior == map.get($behavior-values, both) {
+        $value: clamp(#{$end-value-unit}, #{$calc}, #{$start-value-unit});
+      } @else if $behavior == map.get($behavior-values, start) {
+        $value: min(#{$start-value-unit}, #{$calc});
+      } @else if $behavior == map.get($behavior-values, end) {
+        $value: max(#{$end-value-unit}, #{$calc});
+      }
+    } @else if $start-value < $end-value {
+      @if $behavior == map.get($behavior-values, both) {
+        $value: min(#{$end-value-unit}, max(#{$calc}, #{$start-value-unit}));
+      } @else if $behavior == map.get($behavior-values, start) {
+        $value: max(#{$start-value-unit}, #{$calc});
+      } @else if $behavior == map.get($behavior-values, end) {
+        $value: min(#{$end-value-unit}, #{$calc});
+      }
+    }
+  }
+
+  @return $value;
+}

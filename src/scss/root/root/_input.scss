@@ -1,0 +1,70 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+@mixin input {
+  #{--input}: {
+    // width: 100%;
+    // height: ;
+    // line-height: 1;
+    // color: inherit;
+    // caret-color: currentColor;
+
+    color: {
+      // disabled: ;
+    }
+
+    padding: {
+      // inline: ;
+      // left: ;
+      // right: ;
+    }
+
+    font: {
+      // family: inherit;
+      // weight: inherit;
+      // style: inherit;
+      // size: inherit;
+    }
+
+    background: {
+      // color: initial;
+
+      color: {
+        // disabled: ;
+      }
+    }
+
+    border: {
+      // width: 0px;
+      // style: solid
+      // color: ;
+      // radius: ;
+
+      color: {
+        // disabled: ;
+        // focus: ;
+      }
+
+      top: {
+        // left-radius: ;
+        // right-radius: ;
+      }
+
+      bottom: {
+        // right-radius: ;
+        // left-radius: ;
+      }
+    }
+
+    transition: {
+      // property: none;
+      // duration: 0.3s;
+    }
+
+    placeholder: {
+      // color: inherit;
+      // opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+$selectors: img !default;
+
+.ibg {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  #{$selectors} {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+}

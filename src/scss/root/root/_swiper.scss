@@ -1,0 +1,20 @@
+@use "../../functions/functions";
+@use "../../mixins/mixins";
+@use "../../variables/variables";
+
+@mixin swiper {
+  #{--swiper}: {
+    pagination: {
+      // color: #{};
+
+      bullet: {
+        // size: 8px;
+        // width: 8px;
+        // height: 8px;
+        // border-radius: 50%;
+        // inactive-color: #{}; // #000
+        // inactive-opacity: 1; // 0.2
+      }
+    }
+  }
+}
